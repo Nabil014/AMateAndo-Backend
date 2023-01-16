@@ -4,11 +4,11 @@ const router = Router();
 
 router.use(bodyParser.json());
 
-const userRoute = require('../routes/users')
-const productRoute = require('../routes/product.route')
-const loginGoogle= require('../routes/loginGoogle')
-const loginRoute= require('../routes/login')
-const paymentRoute= require('../routes/payment')
+const userRoute = require('./users')
+const productRoute = require('./product.route')
+const loginGoogle= require('./loginGoogle')
+const loginRoute= require('./login')
+const paymentRoute= require('./payment')
 
 router.use("/api/user", userRoute);
 router.use("/api/product", productRoute);

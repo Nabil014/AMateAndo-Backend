@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/product.model");
-const upload = require("../../../api/libs/storage");
-const cloudinary = require("../../src/utils/cloudinary");
+const upload = require("../../libs/storage");
+const cloudinary = require("../utils/cloudinary");
 
 router.post("/", upload.single("picture"), async (req, res) => {
   const { title, unit_price, stock, description, visibility } = req.body;
