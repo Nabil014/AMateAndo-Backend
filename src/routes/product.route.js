@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = require("mongoose");
 const Product = require("../models/product.model");
 const upload = require("../../libs/storage");
 const cloudinary = require("../utils/cloudinary");
+mongoose.set('strictQuery', false);
 
 router.post("/", upload.single("picture"), async (req, res) => {
   const { title, unit_price, stock, description, visibility } = req.body;
@@ -32,11 +34,11 @@ router.post("/", upload.single("picture"), async (req, res) => {
 router.get('/:_id',async(req,res) => {
   const {_id}=req.params
   try {
-    Product.findById({_id:_id},(error,product) => {
+    Product.find({_id:_id},(error,product) => {
       if(!product){
         res.status(404).send(`El Id=${_id} no corresponde a ningun producto`)
       }
-      res.status(200).send(product)
+      res.send(product)
     })
   } catch (error) {
     console.log(error)
