@@ -1,20 +1,16 @@
-const express = require ("express");
-const mongoose = require ("mongoose");
-const dotenv = require ("dotenv");
+const express = require('express')
+const mongoose = require('mongoose')
+const dotenv = require('dotenv')
 
-dotenv.config();
-
+dotenv.config()
 
 const uri = process.env.DB_URL
 
-mongoose.connect(uri,
-    (err)=>{
-    if(err){
-        console.log(err)
-        console.log("******** ERROR DE CONEXION ********")
-    }else{
-        console.log("******** CONEXION CORRECTA ********")
-    }
-});
+mongoose.connect(uri).then(
+  () => {
+    console.log('****Conectado en el puerto 3000****')
+  },
+  (err) => console.log(err)
+)
 
-module.exports = mongoose;
+module.exports = mongoose
